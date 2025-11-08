@@ -3,10 +3,48 @@
 <head>
   <meta charset="utf-8">
   <title>Éxito</title>
+  <style>
+    .alert-success {
+      color: #FFFF;
+      background-color: #28a745;
+      border-radius: 5px;
+      padding: 25px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 100px;
+    }
+    p {
+      font-size: 30px;
+      padding-top: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .btn-success {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 25px;
+      color: #fff;
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 20px;
+      align-items: center;
+      margin: 0 auto;
+    }
+    div {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <div class="alert-success">
+    <p>✅ ¡Listo! Tu formulario se procesó correctamente.</p>
+  </div>
+
   <div style="padding:30px;">
-    <h2>✅ ¡Listo! Tu formulario se procesó correctamente.</h2>
     <p>Se generó tu PDF y la descarga debería comenzar automáticamente. Si no, presiona el botón de abajo.</p>
 
     {% if pdf_url %}

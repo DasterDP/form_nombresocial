@@ -16,14 +16,32 @@
       background-color: #0077b6;
       color: white;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; 
       align-items: center;
       padding: 10px 40px;
     }
 
+    .left-links, .right-links {
+      display: flex;
+      align-items: center;
+      gap: 25px; 
+    }
+    .right-links a {
+      color: #000000; 
+    }
+    
+    .right-links a:hover {
+      color: #FFFFFF; 
+    }
+
+
     .logo {
       height: 60px;
       cursor: pointer;
+    }
+
+    a:hover {
+      color: #caf0f8;
     }
 
     nav {
@@ -43,8 +61,24 @@
     }
 
     main {
-      text-align: center;
-      padding: 50px;
+      position: relative;
+      height: 100vh;
+      background-color: #FFFFFF;
+      padding-left: 80px;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 48px;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #333333;
+      width: 50%;
+      line-height: 1.5;
+      margin-bottom: 30px;
     }
 
     button {
@@ -61,26 +95,33 @@
     button:hover {
       background-color: #023e8a;
     }
-#TODO ESTO TIENE QUE IR EN UN CSS# 	
+/*TODO ESTO TIENE QUE IR EN UN CSS*/
 	
   </style>
 </head>
 <body>
 <header>
-  <a href="https://usm.cl" target="_blank">
-    <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
-  </a>
-</header>
+  <div class="left-links">
+    <a href="https://usm.cl" target="_blank">
+      <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+    </a>
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="/formulario">Formulario</a>
     </nav>
-  </header>
+  </div>
+
+  <div class="right-links">
+    <a href="https://dee.usm.cl/" target="_blank">Dirección de estudio</a>
+    <a href="https://siga.usm.cl/" target="_blank">Siga</a>
+  </div>
+</header>
+
 
   <main>
-    <h1>Bienvenido</h1>
-    <p>ola.</p>
+    <h1>Bienvenido/a</h1>
+    <p>"pelela gei"</p>
     <a href="/formulario"><button>Ir al formulario</button></a>
   </main>
 </body>
