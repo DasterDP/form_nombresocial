@@ -1,99 +1,138 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Formulario de Nombre Social</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-    
-     header {
+  <meta charset="utf-8">
+  <title>Formulario de Nombre Social</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f2f6fa;
+    }
+
+    header {
       background-color: #0077b6;
       color: white;
       display: flex;
-      justify-content: space-between; 
+      justify-content: space-between;
       align-items: center;
       padding: 10px 40px;
-     }
-     .left-links, .right-links {
-        display: flex;
-        align-items: center;
-        gap: 25px; 
-     }
-     .right-links a {
-      color: #000000; 
-     }
-     .right-links a:hover {
-      color: #FFFFFF; 
-     }
-     .logo {
-      height: 60px;
+    }
+    .left-links, .right-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    .logo {
+      height: 55px;
       cursor: pointer;
-     }
-     a:hover {
-      color: #caf0f8;
-     }
-     nav {
+    }
+    nav {
       display: flex;
       gap: 30px;
-     }
-     nav a {
+    }
+    nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
-     }
-     nav a:hover {
+    }
+    nav a:hover {
       color: #caf0f8;
-     }
+    }
+    .right-links a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .right-links a:hover {
+      color: #FFFFFF;
+    }
 
-     .container {
+    .main-content {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      margin-top: 40px;
-      font-weight: bold;
+      align-items: flex-start;
+      min-height: calc(100vh - 80px);
+      padding-top: 50px;
     }
 
-    button {
-      margin-top: 20px;
-      font-size: 100px;
-      font-weight: bold;
-      width: 100px;
-      height: 50px;
-      justify-content: center;
+    .form-card {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      width: 500px;
     }
 
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #023e8a;
+    }
 
-    </style>
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    input, select {
+      margin-bottom: 10px !important;
+    }
+
+    .btn-primary {
+      background-color: #0077b6;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #023e8a;
+      transform: scale(1.02);
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div class="left-links">
-    <a href="https://usm.cl" target="_blank">
-      <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
-    </a>
-    <nav>
-      <a href="/home">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="/formulario">Formulario</a>
-    </nav>
-  </div>
+  <header>
+    <div class="left-links">
+      <a href="https://usm.cl" target="_blank">
+        <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+      </a>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="/formulario">Formulario</a>
+      </nav>
+    </div>
 
-  <div class="right-links">
-    <a href="https://dee.usm.cl/" target="_blank">Dirección de estudio</a>
-    <a href="https://siga.usm.cl/" target="_blank">Siga</a>
-  </div>
-</header>
-<h1 class="text-center mt-4">Formulario de Nombre Social</h1>
-<div class="container">
+    <div class="right-links">
+      <a href="https://dee.usm.cl/" target="_blank">Dirección de estudios</a>
+      <a href="https://siga.usm.cl/" target="_blank">Siga</a>
+    </div>
+  </header>
 
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-</div>
+
+  <div class="main-content">
+    <div class="form-card">
+      <h1>Formulario de Nombre Social</h1>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
