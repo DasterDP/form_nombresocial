@@ -54,13 +54,12 @@ def formulario(request):
 
 def exito(request, pk):
     solicitud = get_object_or_404(Solicitud, pk=pk)
-    # URL pública al archivo
+
     pdf_url = solicitud.pdf_file.url if solicitud.pdf_file else None
     return render(request, 'app1/exito.html', {'solicitud': solicitud, 'pdf_url': pdf_url})
 
 
-# Step 3: Endpoint to generate a minimal PDF in-memory and email it
-# This does not depend on any external PDF libraries.
+
 @csrf_exempt
 def send_pdf_view(request):
     if request.method != 'POST':
@@ -73,17 +72,14 @@ def send_pdf_view(request):
     if not to_email:
         return HttpResponseBadRequest('to_email is required')
 
-    # For this endpoint, prefer sending the most recently generated file on disk
     try:
         generated_path = None
-        # If a specific file path is provided, honor it, else fallback to latest
         provided_rel = (request.POST.get('pdf_rel_path') or '').strip()
         if provided_rel:
             candidate = os.path.join(settings.MEDIA_ROOT, provided_rel)
             if os.path.exists(candidate):
                 generated_path = candidate
         if not generated_path:
-            # fallback: newest in media/generated_pdfs
             folder = os.path.join(settings.MEDIA_ROOT, 'generated_pdfs')
             if os.path.isdir(folder):
                 pdfs = [os.path.join(folder, f) for f in os.listdir(folder) if f.lower().endswith('.pdf')]

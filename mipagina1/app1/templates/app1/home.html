@@ -8,8 +8,8 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
     }
 
     header {
@@ -19,6 +19,7 @@
       justify-content: space-between; 
       align-items: center;
       padding: 10px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .left-links, .right-links {
@@ -26,25 +27,21 @@
       align-items: center;
       gap: 25px; 
     }
+
     .right-links a {
       color: #000000; 
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s;
     }
-    
+
     .right-links a:hover {
       color: #FFFFFF; 
     }
 
-
     .logo {
       height: 60px;
       cursor: pointer;
-    }
-
-    a:hover {
-      color: #caf0f8;
     }
 
     nav {
@@ -64,23 +61,33 @@
     }
 
     main {
-      position: relative;
-      height: 100vh;
-      background-color: #FFFFFF;
-      padding-left: 80px;
-      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: calc(100vh - 100px);
+      background: linear-gradient(to right, #ffffff, #e0f7fa);
+      padding: 100px 80px;
+      color: #333;
+      animation: fadeIn 1s ease-in-out;
     }
+
     h1 {
-      font-size: 48px;
-      color: #000000;
+      font-size: 56px;
+      color: #023e8a;
       margin-bottom: 20px;
     }
 
-    p {
+    .descripcion {
       font-size: 20px;
-      color: #333333;
-      width: 50%;
-      line-height: 1.5;
+      max-width: 800px;
+      line-height: 1.7;
+      color: #333;
+      background-color: #ffffffb3;
+      padding: 20px 25px;
+      border-left: 5px solid #0077b6;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       margin-bottom: 30px;
     }
 
@@ -88,18 +95,34 @@
       background-color: #0077b6;
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 12px 28px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
+      font-size: 17px;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
 
     button:hover {
       background-color: #023e8a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-/*TODO ESTO TIENE QUE IR EN UN CSS*/
-	
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #666;
+      background-color: #ffffff;
+      border-top: 1px solid #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 <body>
@@ -108,7 +131,10 @@
     <a href="https://usm.cl" target="_blank">
       <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
     </a>
-
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="/formulario">Formulario</a>
+    </nav>
   </div>
 
   <div class="right-links">
@@ -117,11 +143,14 @@
   </div>
 </header>
 
-
-  <main>
-    <h1>Bienvenido/a</h1>
-    <p>"pelela gei"</p>
-    <a href="/formulario"><button>Ir al formulario</button></a>
-  </main>
+<main>
+  <h1>Bienvenido/a</h1>
+  <div class="descripcion">
+    Este es un proceso que consiste en cambiar el nombre asignado al nacimiento del usuario en búsqueda de su comodidad dentro de los espacios académicos. 
+    Esto garantiza un espacio de respeto e inclusión para todo individuo, sea que este no esté conforme con su nombre asignado o pertenezca a disidencias, 
+    siendo nuestro objetivo crear un entorno amigable para el usuario dentro de su experiencia, sea laboral o académica.
+  </div>
+  <a href="/formulario"><button>Ir al formulario</button></a>
+</main>
 </body>
 </html>
